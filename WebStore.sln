@@ -21,6 +21,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.DAL.Sqlite", "Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "UI\WebStore\WebStore.csproj", "{B09BA35B-0A5E-4042-BDA2-0E356DD3518D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Tools", ".Tools", "{7BF8B388-F142-4F19-B014-A22C0E5CEC6E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		ClearObj.bat = ClearObj.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
