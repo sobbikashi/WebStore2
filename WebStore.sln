@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Tools", ".Tools", "{7BF8B3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Interfaces", "Services\WebStore.Interfaces\WebStore.Interfaces\WebStore.Interfaces.csproj", "{D0C254A5-626E-4352-B32D-B69015F841EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{897A71D6-9E41-4C2A-9246-A636E7B54D8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{D0C254A5-626E-4352-B32D-B69015F841EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C254A5-626E-4352-B32D-B69015F841EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C254A5-626E-4352-B32D-B69015F841EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{897A71D6-9E41-4C2A-9246-A636E7B54D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897A71D6-9E41-4C2A-9246-A636E7B54D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897A71D6-9E41-4C2A-9246-A636E7B54D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897A71D6-9E41-4C2A-9246-A636E7B54D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{169B271F-53CE-4BE0-B636-6B2A6DBDFE67} = {E7CBDA18-DCBC-48BD-8D27-B8EB1D1050F5}
 		{B09BA35B-0A5E-4042-BDA2-0E356DD3518D} = {9919CB73-00D5-4135-90AB-3D913F8E2EA2}
 		{D0C254A5-626E-4352-B32D-B69015F841EB} = {3E38E699-E8A4-407B-B824-CC294629E6B4}
+		{897A71D6-9E41-4C2A-9246-A636E7B54D8C} = {3E38E699-E8A4-407B-B824-CC294629E6B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DB1D016-D3B2-4E36-A816-C0A2E0724EBB}
