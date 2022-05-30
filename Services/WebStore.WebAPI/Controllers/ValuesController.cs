@@ -16,15 +16,15 @@ namespace WebStore.WebAPI.Controllers
         [HttpGet] //ОБЯЗАТЕЛЬНО для каждого контроллера прописывать метод доступа к нему!!! MVC системы снова нет!!!
         public IEnumerable<string> GetAll() => _Values.Values;  //если не нужно возвращать статусные коды
 
-        [HttpGet("{id}")]   // Если есть параметр - описать его в методе доступа!! Соскучился уже по MVC?
-        public IActionResult GetById(int id)
+        [HttpGet("{Id}")]   // Если есть параметр - описать его в методе доступа!! Соскучился уже по MVC?
+        public IActionResult GetById(int Id)
         {
-            //if (!_Values.ContainsKey(id))
+            //if (!_Values.ContainsKey(Id))
             //    return NotFound();
 
-            //return Ok(_Values[id]);
+            //return Ok(_Values[Id]);
 
-            if (_Values.TryGetValue(id, out var value))
+            if (_Values.TryGetValue(Id, out var value))
                 return Ok(value);
             return NotFound();
         }
