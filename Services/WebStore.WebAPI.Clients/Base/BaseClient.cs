@@ -21,16 +21,23 @@ namespace WebStore.WebAPI.Clients.Base
             var response = await Http.GetAsync(url).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
-            if (response.StatusCode == HttpStatusCode.NoContent)
+            switch (response.StatusCode)
             {
-                return default;
-            }
-            var result = await response
+                case HttpStatusCode.NoContent:
+                    return default;
+                case HttpStatusCode.NotFound:
+                    return default;
+                default:
+               {
+                        var result = await response
                 .EnsureSuccessStatusCode()
                 .Content
                 .ReadFromJsonAsync<T>()
                 .ConfigureAwait(false);
-            return result;
+                        return result;
+               }
+            }
+
         }
 
         protected HttpResponseMessage Post<T>(string url, T value) => PostAsync(url, value).Result;

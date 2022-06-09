@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Net.Http.Json;
 using WebStore.Domain.Entities;
 using WebStore.Interfaces.Services;
 using WebStore.WebAPI.Clients.Base;
@@ -8,34 +9,48 @@ public class EmployeesClient : BaseClient, IEmployeesData
 {
     private readonly ILogger<EmployeesClient> _Logger;
 
-    public EmployeesClient(HttpClient Client, ILogger<EmployeesClient> Logger) : base(Client, "api/employees") //ОБЯЗАТНЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
+    public EmployeesClient(HttpClient Client, ILogger<EmployeesClient> Logger) : base(Client, "api/employees") //ОБЯЗАТTЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
     {
         _Logger = Logger;
     }
 
     public int Add(Employee employee)
     {
-        throw new NotImplementedException();
+        var response = Post(Address, employee);
+        var added_employee = response.Content.ReadFromJsonAsync<Employee>().Result;
+        if (added_employee is null)
+            return -1;
+        var id = added_employee.Id; 
+        employee.Id = id;
+        return id;
     }
 
-    public bool Delete(int id)
+    public bool Delete(int Id)
     {
-        throw new NotImplementedException();
+        var response = Delete($"{Address}/{Id}");
+        var success = response.IsSuccessStatusCode;
+        return success;
     }
 
     public bool Edit(Employee employee)
     {
-        throw new NotImplementedException();
+       var response = Put(Address, employee);
+       var success = response.Content.ReadFromJsonAsync<bool>().Result;
+        return success;
+        
     }
 
     public IEnumerable<Employee> GetAll()
     {
-        throw new NotImplementedException();
+        var employees = Get<IEnumerable<Employee>>(Address);
+        return employees ?? Enumerable.Empty<Employee>();   
     }
 
-    public Employee? GetById(int id)
+    public Employee? GetById(int Id)
     {
-        throw new NotImplementedException();
+        var employee = Get<Employee>($"{Address}/{Id}");
+        return employee;
     }
+
 }
 
