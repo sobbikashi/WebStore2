@@ -57,7 +57,7 @@ public class EmployeesApiController : ControllerBase
         return Ok(success);
     }
 
-    [HttpDelete("Id")]
+    [HttpDelete("{Id}")]
     public IActionResult Delete(int Id)
     {
         var result = _EmployeesData.Delete(Id);
