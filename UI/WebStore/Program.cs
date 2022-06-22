@@ -83,7 +83,7 @@ services.ConfigureApplicationCookie(opt =>
 
 services.AddAuthorization(opt =>
 {
-    opt.AddPolicy("AdminAuthorization", policy => policy.Requirements.Add(new AdminAuthorizationPolicy(Role.Adinistrators)));
+    opt.AddPolicy("AdminAuthorizationPolicy", policy => policy.Requirements.Add(new AdminAuthorizationPolicy(Role.Adinistrators)));
     //opt.AddPolicy("AdminAuthorizationPolicy", policy => policy.RequireRole(Role.Adinistrators));
 });
 
