@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain;
+using WebStore.Domain.DTO;
 using WebStore.Interfaces.Services;
 
 namespace WebStore.WebAPI.Controllers;
@@ -20,8 +21,8 @@ public class ProductsApiController : ControllerBase
     [HttpGet("sections")] // GET -> http://lovalhost:5001/api/products/sections
     public IActionResult GetSections()
     {
-        var sections = _ProductData.GetSections().ToArray();
-        return Ok(sections);
+        var sections = _ProductData.GetSections();
+        return Ok(sections.ToDTO());
     }
 
     [HttpGet("sections/{Id}")] // GET -> http://lovalhost:5001/api/products/sections/{Id}
@@ -30,14 +31,14 @@ public class ProductsApiController : ControllerBase
         var section = _ProductData.GetSectionById(Id);
         if (section is null)
             return NotFound();
-        return Ok(section);
+        return Ok(section.ToDTO());
     }
 
     [HttpGet("brands")] // GET -> http://lovalhost:5001/api/products/brands
     public IActionResult GetBrands()
     {
         var brands = _ProductData.GetBrands();
-        return Ok(brands);
+        return Ok(brands.ToDTO());
     }
 
     [HttpGet("brands/{Id}")] // GET -> http://lovalhost:5001/api/products/brands/{Id}
@@ -46,14 +47,14 @@ public class ProductsApiController : ControllerBase
         var brand = _ProductData.GetBrandById(Id);
         if (brand is null)
             return NotFound();
-        return Ok(brand);
+        return Ok(brand.ToDTO());
     }
 
     [HttpPost]
     public IActionResult GetProducts(ProductFilter? Filter = null)
     {
         var products = _ProductData.GetProducts(Filter);
-        return Ok(products);
+        return Ok(products.ToDTO());
     }
 
     [HttpGet("{Id}")]
@@ -62,6 +63,6 @@ public class ProductsApiController : ControllerBase
         var product = _ProductData.GetProductById(Id);
         if (product is null)
             return NotFound();
-        return Ok(product);
+        return Ok(product.ToDTO());
     }
 }
