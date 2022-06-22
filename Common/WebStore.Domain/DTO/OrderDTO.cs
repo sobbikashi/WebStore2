@@ -88,6 +88,11 @@ public static class OrderDTOMapper
             Quantity = p.Quantity,
         });
 
+    public static CartViewModel ToCartView(this IEnumerable<OrderItemDTO> Items) => new()
+    {
+        Items = Items.Select(p => (new ProductViewModel { Id = p.ProductId }, p.Quantity))
+    };
+
    
 
 }
