@@ -1,7 +1,5 @@
-using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.Context;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Infrastructure.AuthorizationPolicies;
@@ -10,8 +8,10 @@ using WebStore.Infrastructure.Middleware;
 using WebStore.Interfaces.Services;
 using WebStore.Interfaces.TestAPI;
 using WebStore.Services.Services;
-using WebStore.Services.Services.InMemory;
 using WebStore.Services.Services.InSQL;
+using WebStore.WebAPI.Clients.Employees;
+using WebStore.WebAPI.Clients.Orders;
+using WebStore.WebAPI.Clients.Products;
 using WebStore.WebAPI.Clients.Values;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -81,15 +81,21 @@ services.ConfigureApplicationCookie(opt =>
 
 services.AddAuthorization(opt =>
 {
-    opt.AddPolicy("AdminAuthorization", policy => policy.Requirements.Add(new AdminAuthorizationPolicy(Role.Adinistrators)));
+    opt.AddPolicy("AdminAuthorizationPolicy", policy => policy.Requirements.Add(new AdminAuthorizationPolicy(Role.Adinistrators)));
     //opt.AddPolicy("AdminAuthorizationPolicy", policy => policy.RequireRole(Role.Adinistrators));
 });
 
-services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
-services.AddScoped<IProductData, SqlProductData>();
+//services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
+//services.AddScoped<IProductData, SqlProductData>();
+
 services.AddScoped<ICartService, InCookiesCartService>();
-services.AddScoped<IOrderService, SqlOrderService>();
+//services.AddScoped<IOrderService, SqlOrderService>();
+
 services.AddHttpClient<IValuesService, ValuesClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+services.AddHttpClient<IEmployeesData, EmployeesClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+services.AddHttpClient<IProductData, ProductsClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+services.AddHttpClient<IOrderService, OrdersClient>(client => client.BaseAddress = new(configuration["WebAPI"]));
+
 
 //services.AddAutoMapper(Assembly.GetEntryAssembly());
 services.AddAutoMapper(typeof(Program));
