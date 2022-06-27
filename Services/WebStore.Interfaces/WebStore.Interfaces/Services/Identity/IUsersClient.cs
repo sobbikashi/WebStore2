@@ -14,5 +14,3 @@ public interface IUsersClient:
 {
 
 }
-
-public interface IRolesCllient :
