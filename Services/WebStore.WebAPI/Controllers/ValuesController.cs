@@ -3,7 +3,7 @@ using WebStore.Interfaces;
 
 namespace WebStore.WebAPI.Controllers
 {
-    [Route(WebAPIAddresses.Values)] //Если делаешь API-контроллер, ОБЯЗАТЕЛЬНО прописывать маршрут к нему, MVC системы нет!!! Никто не пропишет сам!!!
+    [Route(WebAPIAddresses.V1.Values)] //Если делаешь API-контроллер, ОБЯЗАТЕЛЬНО прописывать маршрут к нему, MVC системы нет!!! Никто не пропишет сам!!!
     [ApiController] //http://localhost:5001/api/values  это адрес нашего API
     public class ValuesController : ControllerBase
     {

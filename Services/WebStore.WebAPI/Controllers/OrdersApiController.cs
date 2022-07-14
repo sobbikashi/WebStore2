@@ -6,7 +6,7 @@ using WebStore.Interfaces;
 namespace WebStore.WebAPI.Controllers;
 
 [ApiController]
-[Route(WebAPIAddresses.Orders)]
+[Route(WebAPIAddresses.V1.Orders)]
 public class OrdersApiController : ControllerBase
 {
 

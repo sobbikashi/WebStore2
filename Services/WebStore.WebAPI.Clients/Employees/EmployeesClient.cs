@@ -11,7 +11,7 @@ public class EmployeesClient : BaseClient, IEmployeesData
     private readonly ILogger<EmployeesClient> _Logger;
 
     public EmployeesClient(HttpClient Client, ILogger<EmployeesClient> Logger) 
-        : base(Client, WebAPIAddresses.Employees) //ОБЯЗАТTЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
+        : base(Client, WebAPIAddresses.V1.Employees) //ОБЯЗАТTЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
     {
         _Logger = Logger;
     }
