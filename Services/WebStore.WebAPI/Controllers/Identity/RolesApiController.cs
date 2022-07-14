@@ -3,7 +3,7 @@
 namespace WebStore.WebAPI.Controllers.Identity;
 
 [ApiController]
-[Route("api'roles")]
+[Route("api/roles")]
 public class RolesApiController : ControllerBase
 {
     
