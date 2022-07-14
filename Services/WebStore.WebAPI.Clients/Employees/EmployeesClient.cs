@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 using WebStore.Domain.Entities;
+using WebStore.Interfaces;
 using WebStore.Interfaces.Services;
 using WebStore.WebAPI.Clients.Base;
 
@@ -9,7 +10,8 @@ public class EmployeesClient : BaseClient, IEmployeesData
 {
     private readonly ILogger<EmployeesClient> _Logger;
 
-    public EmployeesClient(HttpClient Client, ILogger<EmployeesClient> Logger) : base(Client, "api/employees") //ОБЯЗАТTЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
+    public EmployeesClient(HttpClient Client, ILogger<EmployeesClient> Logger) 
+        : base(Client, WebAPIAddresses.Employees) //ОБЯЗАТTЛЬНО удалять второй параметр в конструкторе, его уже прописали в базовом
     {
         _Logger = Logger;
     }
