@@ -3,5 +3,5 @@ using WebStore.Domain.Entities.Identity;
 
 namespace WebStore.Interfaces.Services.Identity;
 
-internal interface IRoleClient : IRoleStore<Role> { }
+public interface IRoleClient : IRoleStore<Role> { }
 
